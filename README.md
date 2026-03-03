@@ -32,5 +32,10 @@ El flujo de trabajo (Workflow) integra tres capas tecnológicas fundamentales:
 3. El resultado se formatea dinámicamente.
 4. Se despacha un mensaje enriquecido al usuario vía Telegram.
 
+## 📸 Visualización del Flujo
+<div align="center">
+  <img src="images/screenshot.png" alt="Workflow n8n" width="800">
+  <p><i>Vista del flujo de trabajo en n8n con respuesta exitosa del LLM.</i></p>
+</div>
 ---
 **Desarrollado por Víctor Chaves** *Especialista en Automatización y Tecnologías de IA Aplicada.*
