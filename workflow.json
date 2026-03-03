@@ -1,0 +1,123 @@
+{
+  "name": "Proyecto 1: Clasificador de Tickets IA",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7d11cda0-1421-41f8-9281-2956308a7acd",
+              "name": "reclamo",
+              "value": "Tengo un problema con el switch del segundo piso, la VLAN 10 no responde y es muy urgente para el departamento de contabilidad",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "c19b9242-2b56-4e39-b833-6e6b93ce053b",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Analiza el siguiente ticket de soporte técnico: {{ $json.reclamo }}. Responde en español indicando: 1. Nivel de Urgencia (Baja, Media o Alta). 2. Departamento (Redes, Sistemas o Atención al Cliente). 3. Un resumen de 5 palabras.",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        368,
+        0
+      ],
+      "id": "6d9bee36-ca10-4b44-9b04-7a040f5cd44f",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": "llama3.2:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        720,
+        192
+      ],
+      "id": "61198b63-d4e0-4e40-a6a9-9c92ca1cfbad",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "flxtGi1x8cKmisM9",
+          "name": "Ollama account 3"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        32,
+        0
+      ],
+      "id": "b47ace1e-ac58-4fa7-a80c-66cb11d108b0",
+      "name": "When clicking ‘Execute workflow’"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "1ce0d73a-bca5-44f9-b069-4190e6d38d3f",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "5d37b1f7643cd5d2536e442a8b4b8e8e0ddb4414c938b9d07ad790579411cceb"
+  },
+  "id": "9MfsjGFYaOott3at",
+  "tags": []
+}
