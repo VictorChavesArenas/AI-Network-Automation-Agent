@@ -47,8 +47,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
       "typeVersion": 1,
       "position": [
-        720,
-        192
+        496,
+        160
       ],
       "id": "61198b63-d4e0-4e40-a6a9-9c92ca1cfbad",
       "name": "Ollama Chat Model",
@@ -69,6 +69,28 @@
       ],
       "id": "b47ace1e-ac58-4fa7-a80c-66cb11d108b0",
       "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "chatId": "5778178900",
+        "text": "=🚨 NUEVA ALERTA DE RED 🚨\n\nAnálisis de la IA:\n{{ $json.text }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        720,
+        0
+      ],
+      "id": "3a69f8be-6ef6-4d60-8ea7-7ca340b7183f",
+      "name": "Send a text message",
+      "webhookId": "8edf4e63-a601-4f52-84aa-c03cc2bf6564",
+      "credentials": {
+        "telegramApi": {
+          "id": "IKsP0vEgDJNoaUeR",
+          "name": "Unnamed credential"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -105,6 +127,17 @@
           }
         ]
       ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -113,7 +146,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "1ce0d73a-bca5-44f9-b069-4190e6d38d3f",
+  "versionId": "a933f965-8f46-4c28-9194-bb2e60a1ea01",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "5d37b1f7643cd5d2536e442a8b4b8e8e0ddb4414c938b9d07ad790579411cceb"
