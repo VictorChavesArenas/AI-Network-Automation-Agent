@@ -1,36 +1,36 @@
-# 🤖 AI Network Agent: Clasificador Automático de Incidencias
+![n8n](https://img.shields.io/badge/n8n-FF6D5B?style=for-the-badge&logo=n8n&logoColor=white)
+![Ollama](https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white)
+![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)
+![Llama3.2](https://img.shields.io/badge/Llama_3.2-041E42?style=for-the-badge&logo=meta&logoColor=white)
+# 🚀 AI-Driven Automation Agent (Self-Hosted)
 
-Este proyecto es una solución de **Automatización de IT** que utiliza Inteligencia Artificial para procesar, analizar y clasificar tickets de soporte técnico de redes de forma autónoma.
+Este proyecto demuestra la implementación de un **Agente de Inteligencia Artificial totalmente autónomo** y privado, capaz de procesar información compleja, razonar sobre ella y ejecutar acciones de comunicación en tiempo real.
 
-## 🚀 Visión General
-El sistema recibe un reclamo técnico (ej: problemas de VLAN, conectividad o switches), lo procesa mediante un modelo de lenguaje de gran escala (LLM) y devuelve una clasificación estructurada con nivel de urgencia, departamento responsable y un resumen ejecutivo.
+## 🧠 Arquitectura del Sistema
+El flujo de trabajo (Workflow) integra tres capas tecnológicas fundamentales:
+
+1. **Capa de Entrada (Ingestion):** Captura de datos estructurados/no estructurados.
+2. **Capa de Inteligencia (Inference):** Procesamiento de lenguaje natural utilizando **Llama 3.2** ejecutado localmente, garantizando privacidad y latencia mínima.
+3. **Capa de Acción (Delivery):** Notificación automática y formateada a través de la API de **Telegram**.
 
 ## 🛠️ Stack Tecnológico
-- **Orquestación:** [n8n](https://n8n.io/) (Flujos de trabajo basados en nodos).
-- **IA Local:** [Ollama](https://ollama.com/) (Motor de ejecución de modelos).
-- **Modelo LLM:** **Llama 3.2** (Optimizado para razonamiento y clasificación).
-- **Lógica de Datos:** Expresiones en JSON y Prompt Engineering.
+- **Orquestador:** n8n (Node-based Automation Tool).
+- **Motor de IA:** Ollama (Local LLM Runtime).
+- **Modelo:** Llama 3.2.
+- **Comunicación:** Telegram Bot API.
 
-## 💡 Por qué esta arquitectura es superior (Business Value)
-1. **Privacidad de Datos (Privacy First):** Al ejecutar el modelo localmente con Ollama, los datos sensibles de la infraestructura de red nunca salen de la organización.
-2. **Coste Operativo Cero:** A diferencia de soluciones basadas en OpenAI o Claude, este sistema no tiene costes por token o ejecución.
-3. **Escalabilidad:** El flujo es fácilmente integrable con APIs de terceros como Telegram, Slack o bases de datos SQL/NoSQL.
+## 🌟 Características Principales
+- **Zero-Cloud Dependency:** Todo el procesamiento de IA ocurre en hardware local, eliminando costes de API (OpenAI/Claude) y protegiendo la privacidad de los datos.
+- **Prompt Engineering:** Configuración avanzada de instrucciones para obtener respuestas estructuradas y accionables.
+- **Real-Time Alerts:** Notificaciones push inmediatas basadas en el análisis del agente.
 
-## 📋 Ejemplo de Procesamiento
-- **Input (Ticket):** *"La VLAN 10 del segundo piso no responde, el departamento de contabilidad está parado."*
-- **Output de la IA:**
-  - **Urgencia:** Alta
-  - **Departamento:** Redes / Infraestructura
-  - **Acción Sugerida:** Revisar configuración de VLAN 10 y estado del switch del piso 2.
+## 📊 Flujo de Datos
 
-## 📸 Captura del Proyecto
-![Flujo de n8n](screenshot.png)
 
-## 🔧 Instalación y Uso
-1. Instalar **Ollama** y ejecutar `ollama pull llama3.2`.
-2. Instalar **n8n** localmente vía npm (`npx n8n`) o Docker.
-3. Importar el archivo `workflow.json` incluido en este repositorio.
-4. Asegurarse de que la credencial de Ollama apunta a `http://localhost:11434`.
+1. Se recibe un input a través de un disparador manual o webhook.
+2. El modelo **Llama 3.2** analiza la carga útil (payload) bajo un contexto predefinido.
+3. El resultado se formatea dinámicamente.
+4. Se despacha un mensaje enriquecido al usuario vía Telegram.
 
 ---
-**Desarrollado por Víctor Chaves** *Enfocado en la intersección entre Redes, Automatización e Inteligencia Artificial.*
+**Desarrollado por Víctor Chaves** *Especialista en Automatización y Tecnologías de IA Aplicada.*
